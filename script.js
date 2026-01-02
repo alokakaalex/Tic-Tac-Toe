@@ -22,6 +22,11 @@ const resetGame = ()=>{
         enable_boxes();
         msg_container.classList.add("hide");
 };
+const gameDraw = () => {
+  msg.innerText = `Game was a Draw.`;
+  msg_container.classList.remove("hide");
+  disable_boxes();
+};
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         if(turnX){
@@ -62,8 +67,8 @@ boxes.forEach((box)=>{
             let pos3val = boxes[pattern[2]].innerText;
             if(pos1val != "" && pos2val != "" && pos3val != ""){
                 if(pos1val === pos2val && pos2val === pos3val){
-                    console.log("winner is",pos1val);
                     showWinner(pos1val);
+                    return true;
                 }
             }
         }
